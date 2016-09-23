@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>Addor</title>
+	<script type="text/javascript">
+	function doMath(){
+		var num1 = document.getElementById('first').value;
+		// console.log(num1)
+		var num2 = document.getElementById('second').value;
+		var sum = num1+num2;
+		document.getElementById('out').innerHTML = sum;
+	}
+	</script>
+</head>
+<body>
+	<input id = "first">
+	<input id = "second">
+	<button onclick = "doMath()">Click to compute 420</button>
+	<div id = "out"></div>
+</body>
+</html>

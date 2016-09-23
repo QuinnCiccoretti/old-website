@@ -1,0 +1,91 @@
+
+body {
+  left: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu {
+  background-image: url("http://cdn1.bestpsdfreebies.com/wp-content/uploads/2014/05/shards_pattern.jpg");
+  background-repeat: repeat;
+  top: -700px;  
+  height: 700px;
+  position: fixed;
+  width: 100%; 
+}
+#div-select-rap{
+  padding-top: 10px;
+}
+#div-select-song{
+  padding-bottom: 10px;
+}
+.jumbotron {
+  background-image: url('http://orig14.deviantart.net/405b/f/2012/180/b/f/pattern_variation_by_absurdwordpreferred-d55auet.jpg');
+  height: 100%;
+  width: 100%;
+  background-repeat: repeat;
+  background-size: cover;
+}
+.icon-close {
+  cursor: pointer;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+input{
+  margin:auto;
+  text-align: center;
+}
+.icon-menu {
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  padding-top: 32px;
+  /*padding-left: 20px;*/
+  padding-bottom: 55px;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin:auto;
+  text-align: center;
+  width: 100%;
+  height: 65px;
+ -webkit-transition: padding-top .5s; /* Safari */
+    transition: padding-top .5s;
+}
+.icon-menu:hover{
+   padding-top: 50px;
+}
+#form{
+  margin: auto;
+  text-align: center;
+}
+#title{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 70px;
+	margin:auto;
+  	text-align: center;
+  	border-color: red;
+	border-radius: 100px;
+	border-style:solid;
+	background-color: transparent;
+  
+}
+
+.arrow{
+	height: 100px;
+	width:100px;
+}
+.help{
+	cursor: pointer;
+  	font-family: 'Open Sans', sans-serif;
+  	font-size: 16px;
+  	color:black;
+  	margin: auto;
+  	text-align: center;
+  	display: block;
+  	padding-left: 35px;
+}
+html{
+  font-family: 'Open Sans', sans-serif;
+}

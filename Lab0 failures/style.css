@@ -1,0 +1,27 @@
+.outer {
+    display: inline;
+    top: 0;
+}
+
+.middle {
+    display: inline;
+    top: 50%;
+    position: relative;
+}
+
+.inner {
+    display: inline;
+    top: -50%;
+    position: relative;
+}
+li{
+			background-color: transparent;
+			border: red, dashed, 10px;
+}
+a{
+	color:red;
+	text-decoration: none;
+}
+html{
+	font-family: Arial;
+}

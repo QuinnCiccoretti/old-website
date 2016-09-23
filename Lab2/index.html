@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Lab2</title>
+	<script type="text/javascript">
+	
+	window.onload = function(){
+		console.log(document.getElementById("timeLeft").innerHTML);
+		window.setInterval(countDown, 1000)
+	}
+	function countDown(){
+		var text = document.getElementById("timeLeft");
+		var time = text.innerHTML;
+		var newTime = time -1;
+		text.innerHTML = newTime;
+	}
+	function selectRap(){
+		var rappersAndSongs = [];
+		var mapIndexToRapper = ['Kendrick Lamar','Logic','Childish Gambino','Eminem','Drake']
+	    rappersAndSongs[0] = ['Alright','m.A.A.d City','How Much A Dollar Cost?', 'Swimming Pools'];
+	    rappersAndSongs[1] = ['Under Pressure','44 Bars','Slave II','Like Woah'];
+	    rappersAndSongs[2] = ['Sober','II Telegraph Ave.','3005','Retro'];
+	    rappersAndSongs[3] = ['Lose Yourself','Survival','Rap God','Forever'];
+	    rappersAndSongs[4] = ['Forever','Over','Know Yourself','The Motto'];
+		var songbox = document.getElementById("songname");
+		// var artistbox = document.getElementById("artist");
+		var randArtistIndex = Math.floor(Math.random()*5);
+		var randSongIndex = Math.floor(Math.random()*4);
+		songbox.innerHTML = rappersAndSongs[randArtistIndex][randSongIndex];
+
+	}
+
+	</script>
+</head>
+	<body>
+		<h1>Know Your Rap Music</h1>
+		<div id = "timeLeft">60</div>
+		<div id = "songname">Song Name Will Appear Here<div>
+		<button type="button" onclick = "selectRap()">Click Me!</button>
+		<div id = 'enterArtist'>
+		Enter Artist:<br>
+          <input autofocus placeholder = "Lil Wayne" type="text" id = "artist" name="artist" ><br>
+        </div>
+	</body>
+</html>
