@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>AJAX</title>
+	<script type="text/javascript">
+	window.onload= function(){
+		document.getElementById('sendQButton').onclick = whenClicked;
+	}
+	function whenClicked(){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if((this.readyState==4)&&(this.status==200)){
+				console.log(this.responseText);
+				document.getElementById("Output").innerHTML = this.responseText;
+			}
+		}
+		xhttp.open("Get","https://tmrudwick-web.herokuapp.com/SearchQuery/search.php?query=thlet",true)
+		xhttp.send(document.getElementById("qInput").value);
+	}
+	</script>
+</head>
+<body>
+	<input id = "qInput">
+	<button id = "sendQButton">Send Request</button>
+	<div id = "Output"></div>
+</body>
+</html>

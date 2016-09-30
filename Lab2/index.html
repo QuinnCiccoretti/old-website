@@ -1,44 +1,220 @@
 <html>
 <head>
 	<title>Lab2</title>
-	<script type="text/javascript">
 	
+	<script type="text/javascript">
+	done = [];
+	var rappersAndSongs = [];
+	var correctArtist = 0;
+	var numWrong =0;
+	var correctSong = "";
+	var mapIndexToRapper = ['Kendrick Lamar','Logic','Childish Gambino','Eminem','Drake']
+	rappersAndSongs.push(['Alright','m.A.A.d City','How Much A Dollar Cost?', 'Swimming Pools']);
+	rappersAndSongs.push(['Under Pressure','44 Bars','Slave II','Like Woah']);
+	rappersAndSongs.push(['Sober','II Telegraph Ave.','3005','Retro']);
+	rappersAndSongs.push(['Lose Yourself','Survival','Rap God','Forever']);
+	rappersAndSongs.push(['Forever','Over','Know Yourself','The Motto']);
+	    var done = [];
 	window.onload = function(){
+		document.getElementById("end-frame").style.display = 'none';
 		console.log(document.getElementById("timeLeft").innerHTML);
 		window.setInterval(countDown, 1000)
 	}
 	function countDown(){
 		var text = document.getElementById("timeLeft");
 		var time = text.innerHTML;
-		var newTime = time -1;
-		text.innerHTML = newTime;
+		if(time ==0){
+			endtimesTimeOut();
+		}
+		else{
+			var newTime = time -1;
+			text.innerHTML = newTime;
+		}
 	}
 	function selectRap(){
-		var rappersAndSongs = [];
-		var mapIndexToRapper = ['Kendrick Lamar','Logic','Childish Gambino','Eminem','Drake']
-	    rappersAndSongs[0] = ['Alright','m.A.A.d City','How Much A Dollar Cost?', 'Swimming Pools'];
-	    rappersAndSongs[1] = ['Under Pressure','44 Bars','Slave II','Like Woah'];
-	    rappersAndSongs[2] = ['Sober','II Telegraph Ave.','3005','Retro'];
-	    rappersAndSongs[3] = ['Lose Yourself','Survival','Rap God','Forever'];
-	    rappersAndSongs[4] = ['Forever','Over','Know Yourself','The Motto'];
+		var button = document.getElementById("startbutton");
+		button.onclick = endtimesTimeOut;
+		button.innerHTML = "Click To Forfeit";
 		var songbox = document.getElementById("songname");
+		var inbox = document.getElementById('input');
+		inbox.focus();
+		inbox.value="";
 		// var artistbox = document.getElementById("artist");
+		
+		if(done.length < 19){
+			songName = pickSong();
+			while(done.indexOf(songName)!=-1){
+					songName = pickSong();
+			}
+			done.push(songName);
+			
+			correctSong = songName;
+			songbox.innerHTML = songName;
+			}
+		else{
+			endtimesAllDone();
+
+		}
+		
+
+	}
+	function endtimesAllDone(){
+		document.getElementById("content-frame").style.display = 'none';
+		var songbox = document.getElementById("songname");
+		songbox.innerHTML = "Done";
+		var timer = document.getElementById("timeLeft");
+		timer.style.display = 'none';
+		document.getElementById("score").innerHTML = (done.length-numWrong) +"/"+done.length;
+		document.getElementById("end-frame").style.display = 'block';
+
+	}
+	function endtimesTimeOut(){
+		document.getElementById("content-frame").style.display = 'none';
+		var songbox = document.getElementById("songname");
+		songbox.innerHTML = "Done";
+		var timer = document.getElementById("timeLeft");
+		timer.style.display = 'none';
+		if(done.length<=0){
+			document.getElementById("score").innerHTML =  "0/0";
+		}
+		else{
+			document.getElementById("score").innerHTML = (done.length-numWrong)-1 +"/"+done.length;
+		}
+		document.getElementById("end-frame").style.display = 'block';
+
+	}
+	function pickSong(){
 		var randArtistIndex = Math.floor(Math.random()*5);
 		var randSongIndex = Math.floor(Math.random()*4);
-		songbox.innerHTML = rappersAndSongs[randArtistIndex][randSongIndex];
+		var song = rappersAndSongs[randArtistIndex][randSongIndex];
+		correctArtist = randArtistIndex;
+		return song;
+		
+		
+	}
+	function checkInput(){
+		if(event.keyCode == 13) {
+        	var input = document.getElementById("input");
+        	var output = document.getElementById("rightornah");
+        	var rapperindex = mapIndexToRapper.indexOf(input.value);
+        	if(rapperindex==-1){							//if the inputted rapper DNE
+        		output.innerHTML = "Nope!";	
+        		numWrong = numWrong+1;
+        	}
+        	else{
+	        	var guessedList = rappersAndSongs[rapperindex];
+	        	console.log(guessedList)
+	        	if(guessedList.indexOf(correctSong)==-1){		//if the inputted rapper is a rapper but is the wrong one
+	        		output.innerHTML = "Nope!";
+	        		numWrong = numWrong+1;
+	        	}
+	        	else{
+	        		output.innerHTML = "Correct!";
+	        		selectRap();
+	        	}
+        	}
 
+        	
+    	}
+    	
 	}
 
 	</script>
+	<style type="text/css">
+	body{
+		background-image: url('http://www.supercoloring.com/sites/default/files/styles/coloring_full/public/cif/2015/01/tessellation-with-triangle-and-square-tiling-coloring-pages.png');
+		background-repeat: repeat;
+		text-align: center;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 20px;
+		font-style: bold;
+		color: white;
+		
+	}
+	.wrapper{
+		
+		background: rgba(178, 3, 3, 0.7);
+		height: 75%;
+	}
+	h1{
+		padding-top: 20px;
+		margin: 20px;
+		font-size: 50px;
+		color: white;
+		font-style: bold;
+	}
+	#content-frame{
+		
+	}
+	#enterArtist{
+		margin: 60px;
+	}
+	#songName{
+		margin:20px;
+	}
+	#startbutton{
+		background-color: black; /* Green */
+	    border: 2px solid white;
+	    color: white;
+	    padding: 15px 32px;
+	    height: 9%;
+	    width: 14%;
+	    text-align: center;
+	    text-decoration: none;
+	    font-size: 16px;
+	    margin: 4px 2px;
+	    cursor: pointer;
+	    transition: height .5s, width .5s, color .5s, background-color .5s;
+	}
+	#startbutton:hover{
+		height: 9%;
+	    width: 16%;
+	    background-color: white; /* Green */
+	    border: 2px solid black;
+	    color: black;
+	}
+	.snoop{
+		height: 25%;
+		width: 9%;
+		transition: transform 5s, height 5s, width 5s;
+	}
+	.snoop:hover{
+		transform: rotate(1080deg);
+		height: 100%;
+		width: 40%;
+	}
+	#input{
+		margin:10px;
+	}
+	</style>
 </head>
 	<body>
-		<h1>Know Your Rap Music</h1>
-		<div id = "timeLeft">60</div>
-		<div id = "songname">Song Name Will Appear Here<div>
-		<button type="button" onclick = "selectRap()">Click Me!</button>
-		<div id = 'enterArtist'>
-		Enter Artist:<br>
-          <input autofocus placeholder = "Lil Wayne" type="text" id = "artist" name="artist" ><br>
-        </div>
+		<div class = "wrapper">
+			<h1>Quinn's Quick Quiz: Know Your Rap Music</h1>
+			<div id = "content-frame">
+				<div id = "timeLeft">60</div>
+
+				<div id = "songname">Song Name Will Appear Here</div>
+
+				<button id = "startbutton" type="button" onclick = "selectRap()">Click To Begin</button>
+
+				<div id = 'enterArtist' >
+				Enter Artist:<br>
+		          <input autofocus placeholder = "Lil Wayne" type="text" id = "input" name="input" onkeydown = "checkInput()"><br>
+		        </div>
+
+		        
+
+		        <div class = "correctness">
+		        	<h1 id = "rightornah"></h1>
+		        </div>
+	    	</div>
+	    	<div id = "end-frame">
+	    		<p style = "display: none;">QQQ Final Score:</p>
+	    		<h2 id = "score"></h2>
+
+	    	</div>
+	    	<img class = "snoop" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif"/>
+    </div>
 	</body>
 </html>
