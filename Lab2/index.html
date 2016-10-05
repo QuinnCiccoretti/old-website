@@ -8,7 +8,7 @@
 	var correctArtist = 0;
 	var numWrong =0;
 	var correctSong = "";
-	var mapIndexToRapper = ['Kendrick Lamar','Logic','Childish Gambino','Eminem','Drake']
+	var mapIndexToRapper = ['kendrick lamar','logic','childish gambino','eminem','drake']
 	rappersAndSongs.push(['Alright','m.A.A.d City','How Much A Dollar Cost?', 'Swimming Pools']);
 	rappersAndSongs.push(['Under Pressure','44 Bars','Slave II','Like Woah']);
 	rappersAndSongs.push(['Sober','II Telegraph Ave.','3005','Retro']);
@@ -18,21 +18,59 @@
 	window.onload = function(){
 		document.getElementById("end-frame").style.display = 'none';
 		console.log(document.getElementById("timeLeft").innerHTML);
-		window.setInterval(countDown, 1000)
+		
 	}
+	var r = 66;
+	var g = 244;
+	var b = 66;
 	function countDown(){
 		var text = document.getElementById("timeLeft");
 		var time = text.innerHTML;
-		if(time ==0){
-			endtimesTimeOut();
-		}
-		else{
-			var newTime = time -1;
-			text.innerHTML = newTime;
+		if(countingDown==true){
+			if(time > 30 ){
+				r=r+5.9;
+			}
+			else{
+				g=g-5.9;
+			}
+			console.log(r);
+			console.log(g);
+			// text.style.color = "rgba("+r+","+g+","+b+",1)";
+			document.getElementById("timeLeft").style.color= 'rgb(' + parseInt(r) + ',' + parseInt(g) + ',' + parseInt(b) + ')';
+			if(time ==0){
+				endtimesTimeOut();
+			}
+			else{
+				var newTime = time -1;
+				text.innerHTML = newTime;
+			}
 		}
 	}
+	var countingDown = false;
+	function pauseTime(){
+		pause = document.getElementById("pausebutton");
+		countingDown = false;
+		pause.onclick = playTime;
+		pause.innerHTML = ">";
+
+	}
+	function playTime(){
+		pause = document.getElementById("pausebutton");
+		countingDown = true;
+		pause.onclick = pauseTime;
+		pause.innerHTML = "||";
+	}
 	function selectRap(){
+		pause = document.getElementById("pausebutton");
+		pause.onclick = pauseTime;
+		pause.style.display = "inline-block";
+		if(countingDown==false){
+			window.setInterval(countDown, 1000);
+			countingDown = true;
+		}
 		var button = document.getElementById("startbutton");
+		pause.innerHTML = "||"
+		button.style.display = "inline-block";
 		button.onclick = endtimesTimeOut;
 		button.innerHTML = "Click To Forfeit";
 		var songbox = document.getElementById("songname");
@@ -59,16 +97,19 @@
 
 	}
 	function endtimesAllDone(){
+		countingDown = false;
 		document.getElementById("content-frame").style.display = 'none';
 		var songbox = document.getElementById("songname");
 		songbox.innerHTML = "Done";
 		var timer = document.getElementById("timeLeft");
 		timer.style.display = 'none';
-		document.getElementById("score").innerHTML = (done.length-numWrong) +"/"+done.length;
+		document.getElementById("score").innerHTML = done.length+1 +"/20";
 		document.getElementById("end-frame").style.display = 'block';
+		document.getElementById("complete").innerHTML = "You Attempted the Following: "+done;
 
 	}
 	function endtimesTimeOut(){
+		countingDown = false;
 		document.getElementById("content-frame").style.display = 'none';
 		var songbox = document.getElementById("songname");
 		songbox.innerHTML = "Done";
@@ -78,9 +119,10 @@
 			document.getElementById("score").innerHTML =  "0/0";
 		}
 		else{
-			document.getElementById("score").innerHTML = (done.length-numWrong)-1 +"/"+done.length;
+			document.getElementById("score").innerHTML = done.length-1 +"/20";
 		}
 		document.getElementById("end-frame").style.display = 'block';
+		document.getElementById("complete").innerHTML = "You Attempted the Following: "+done;
 
 	}
 	function pickSong(){
@@ -96,17 +138,16 @@
 		if(event.keyCode == 13) {
         	var input = document.getElementById("input");
         	var output = document.getElementById("rightornah");
-        	var rapperindex = mapIndexToRapper.indexOf(input.value);
+        	var rapperindex = mapIndexToRapper.indexOf(input.value.toLowerCase());
         	if(rapperindex==-1){							//if the inputted rapper DNE
         		output.innerHTML = "Nope!";	
-        		numWrong = numWrong+1;
         	}
         	else{
 	        	var guessedList = rappersAndSongs[rapperindex];
 	        	console.log(guessedList)
 	        	if(guessedList.indexOf(correctSong)==-1){		//if the inputted rapper is a rapper but is the wrong one
 	        		output.innerHTML = "Nope!";
-	        		numWrong = numWrong+1;
+	        		
 	        	}
 	        	else{
 	        		output.innerHTML = "Correct!";
@@ -128,7 +169,7 @@
 		font-family: 'Open Sans', sans-serif;
 		font-size: 20px;
 		font-style: bold;
-		color: white;
+		color:white;
 		
 	}
 	.wrapper{
@@ -143,8 +184,9 @@
 		color: white;
 		font-style: bold;
 	}
-	#content-frame{
-		
+	#timeLeft{
+		font-size: 70px;
+		/*color: rgba(178, 3, 3);*/
 	}
 	#enterArtist{
 		margin: 60px;
@@ -152,7 +194,7 @@
 	#songName{
 		margin:20px;
 	}
-	#startbutton{
+	button{
 		background-color: black; /* Green */
 	    border: 2px solid white;
 	    color: white;
@@ -166,7 +208,7 @@
 	    cursor: pointer;
 	    transition: height .5s, width .5s, color .5s, background-color .5s;
 	}
-	#startbutton:hover{
+	button:hover{
 		height: 9%;
 	    width: 16%;
 	    background-color: white; /* Green */
@@ -192,15 +234,15 @@
 		<div class = "wrapper">
 			<h1>Quinn's Quick Quiz: Know Your Rap Music</h1>
 			<div id = "content-frame">
-				<div id = "timeLeft">60</div>
+				<h2 id = "timeLeft">100</h2>
 
 				<div id = "songname">Song Name Will Appear Here</div>
 
-				<button id = "startbutton" type="button" onclick = "selectRap()">Click To Begin</button>
-
+				<button id = "startbutton" type="button" onclick = "selectRap()" >Click To Begin</button>
+				<button id = "pausebutton" type="button" style = "display: none;"||></button>
 				<div id = 'enterArtist' >
 				Enter Artist:<br>
-		          <input autofocus placeholder = "Lil Wayne" type="text" id = "input" name="input" onkeydown = "checkInput()"><br>
+		          <input autofocus placeholder = "Drake" type="text" id = "input" name="input" onkeydown = "checkInput()"><br>
 		        </div>
 
 		        
@@ -214,6 +256,7 @@
 	    		<h2 id = "score"></h2>
 
 	    	</div>
+	    	<h2 id = "complete"></h2>
 	    	<img class = "snoop" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif"/>
     </div>
 	</body>
