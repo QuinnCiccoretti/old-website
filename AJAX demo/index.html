@@ -4,24 +4,31 @@
 	<title>AJAX</title>
 	<script type="text/javascript">
 	window.onload= function(){
-		document.getElementById('sendQButton').onclick = whenClicked;
+		document.getElementById('qInput').onkeyup = chk_me;
 	}
 	function whenClicked(){
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
 			if((this.readyState==4)&&(this.status==200)){
 				console.log(this.responseText);
-				document.getElementById("Output").innerHTML = this.responseText;
+				words = this.responseText.split(" ").slice(0,10).join().replace(","," ")
+				document.getElementById("Output").innerHTML = words
 			}
 		}
-		xhttp.open("Get","https://tmrudwick-web.herokuapp.com/SearchQuery/search.php?query=thlet",true)
-		xhttp.send(document.getElementById("qInput").value);
+		input = document.getElementById("qInput").value;
+		xhttp.open("Get","https://tmrudwick-web.herokuapp.com/SearchQuery/search.php?query="+input,true)
+		xhttp.send(input);
+	}
+	var timer;
+	function chk_me(){
+	   clearTimeout(timer);
+	   timer=setTimeout(whenClicked,1000);
 	}
 	</script>
 </head>
 <body>
 	<input id = "qInput">
-	<button id = "sendQButton">Send Request</button>
+	<div id = "label">Input A Word<div>
 	<div id = "Output"></div>
 </body>
 </html>
