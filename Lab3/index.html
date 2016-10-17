@@ -1,0 +1,133 @@
+
+<html>
+<head>
+	<title>AJAX</title>
+	<script type="text/javascript">
+		window.onload= function(){
+			document.getElementById('qInput').onkeyup = chk_me;
+		}
+		var id = setInterval(frame, 5);
+		var ticking = false;
+		var done = {};
+		function whenClicked(){
+			var xhttp = new XMLHttpRequest();
+			var input = document.getElementById("qInput").value;
+			xhttp.onreadystatechange = function(){
+				if((this.readyState==4)&&(this.status==200)){
+					console.log(this.responseText);
+					words = this.responseText.split(" ").slice(0,10).join().replace(/,/g,"");
+					done[input] = words;
+					document.getElementById("Output").innerHTML = words;
+					document.getElementById("displist").innerHTML = "Previous Searches: "+Object.keys(done).slice(0,10).join().replace(/ ,/g,", ");
+				}
+			}
+			
+			if(input in done){
+				document.getElementById("Output").innerHTML =  done[input];
+				console.log("Been here");
+			}
+			else{
+				xhttp.open("Get","https://tmrudwick-web.herokuapp.com/SearchQuery/search.php?query="+input,true)
+				xhttp.send(input);
+				clearInterval(id);
+				ticking = false;
+				pos=0
+		}
+		}
+		var timer;
+		var pos = 0;
+		var delay = 2000;
+		function chk_me(){
+			pos=0;
+			clearInterval(id);
+			id = setInterval(frame, 5);
+		   clearTimeout(timer);
+		   timer=setTimeout(whenClicked,delay);
+		   ticking = true;
+		}
+		
+		
+		function frame() {
+			if(ticking){
+			    if (pos>delay) {
+			    	pos = 0
+			        ticking=false;
+			        document.getElementById("loadbar").style.width = 0;
+			    } else {
+			        pos++;
+			        document.getElementById("loadbar").style.width = (pos/(delay))*600;
+
+			    }
+			}
+			else{
+				pos = 0;
+			}
+		}
+	</script>
+	<style type="text/css">
+		#container {
+			text-align: center;
+			margin: auto;
+		    width: 100px;
+		    height: 20px;
+		    position: relative;
+		    top: 10px;
+		    background: green;
+		    overflow: hidden;
+		}
+		#loadbar {
+		    width: 10px;
+		    height: 20px;
+		    position: absolute;
+		    background: red;
+		}
+		body{
+			text-align: center;
+			background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cairo_tessellation_simple.svg/2000px-Cairo_tessellation_simple.svg.png");
+			background-repeat: repeat;
+
+		}
+		#wrapper{
+			top: -10px;
+			text-align: center;
+			background-color: rgba(244, 146, 66, .9);
+			height: 50%;
+			width: 50%;
+			position: relative;
+			left: 25%;
+			padding-top: 10%;
+		}
+		div{
+			font-style: bold;
+			font-size: 30px;
+		}
+		#Output{
+			background-color: white;
+			color:black;
+		}
+		#label{
+			position: relative;
+			top: 20px;
+			background-color: black;
+			color: white;
+		}
+		#qInput{
+			height: 40px;
+			width: 200px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id = "wrapper">
+		<h1>Search for Words:</h1>
+		<input placeholder = "(Enter A Word)" id = "qInput">
+		<div id = "container">
+			<div id = "loadbar"> </div>
+		</div>
+		<div id = "label">Words containing that:<div>
+		<div id = "Output">(Input a Word)</div>
+		<div id = "displist"></div>
+	</div>
+</body>
+</html>

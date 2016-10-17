@@ -3,31 +3,67 @@
 <head>
 	<title>AJAX</title>
 	<script type="text/javascript">
-	window.onload= function(){
-		document.getElementById('qInput').onkeyup = chk_me;
-	}
-	function whenClicked(){
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function(){
-			if((this.readyState==4)&&(this.status==200)){
-				console.log(this.responseText);
-				words = this.responseText.split(" ").slice(0,10).join().replace(","," ")
-				document.getElementById("Output").innerHTML = words
-			}
+		window.onload= function(){
+			document.getElementById('qInput').onkeyup = chk_me;
 		}
-		input = document.getElementById("qInput").value;
-		xhttp.open("Get","https://tmrudwick-web.herokuapp.com/SearchQuery/search.php?query="+input,true)
-		xhttp.send(input);
-	}
-	var timer;
-	function chk_me(){
-	   clearTimeout(timer);
-	   timer=setTimeout(whenClicked,4000);
-	}
+		function whenClicked(){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if((this.readyState==4)&&(this.status==200)){
+					console.log(this.responseText);
+					words = this.responseText.split(" ").slice(0,10).join().replace(","," ")
+					document.getElementById("Output").innerHTML = words
+				}
+			}
+			input = document.getElementById("qInput").value;
+			xhttp.open("Get","https://tmrudwick-web.herokuapp.com/SearchQuery/search.php?query="+input,true)
+			xhttp.send(input);
+		}
+		var timer;
+		var isLoading = false;
+		var pos = 0;
+		var delay = 2000;
+		function chk_me(){
+			pos=0;
+		   clearTimeout(timer);
+		   
+		   timer=setTimeout(whenClicked,delay);
+		}
+		var id = setInterval(frame, 4);
+		
+		function frame() {
+		    if (pos>delay) {
+		    	pos = 0
+		        clearInterval(id);
+		        document.getElementById("loadbar").style.width = (pos/delay)*100;
+		    } else {
+		        pos++;
+		        document.getElementById("loadbar").style.width = (pos/delay)*100;
+
+		    }
+		}
 	</script>
+	<style type="text/css">
+		#container {
+		    width: 100px;
+		    height: 20px;
+		    position: relative;
+		    background: green;
+		}
+		#loadbar {
+		    width: 10px;
+		    height: 20px;
+		    position: absolute;
+		    background: red;
+		}
+	</style>
 </head>
 <body>
 	<input id = "qInput">
+	<div id = "container">
+		<div id = "loadbar"> </div>
+	</div>
+	
 	<div id = "label">Input A Word<div>
 	<div id = "Output"></div>
 </body>
