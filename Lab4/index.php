@@ -21,5 +21,6 @@
 <body>
 	First name: <input type="text" id="qInput"><br>
 	<button type = "button" onclick = "getWord()">Click</button>
+	<a href="https://lit-app.herokuapp.com/Lab4/words.php?query=">Link</a>
 	</body>
 </html>
