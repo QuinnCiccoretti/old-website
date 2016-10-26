@@ -1,22 +1,30 @@
 <html>
 <head>
 	<title>Lab 4</title>
+	<script type="text/javascript">
+	function getWord(){
+			var xhttp = new XMLHttpRequest();
+			var input = document.getElementById("qInput").value;
+			xhttp.onreadystatechange = function(){
+				if((this.readyState==4)&&(this.status==200)){
+					console.log(this.responseText);
+					// words = this.responseText.split(" ").slice(0,10).join();
+					// done[input]=words;
+					// document.getElementById("Output").innerHTML = words;
+				}
+			}
+			// if(!(input in done)){
+			 	xhttp.open("Get","https://lit-app.herokuapp.com/words.php?query="+input,true)
+			 	xhttp.send(input);
+			// }
+			// else{
+			// 	document.getElementById("Output").innerHTML = done[input];
+			// }
+		}
+	</script>
 </head>
 <body>
-	First name: <input type="text" id="quinnput"><br>
-	<?php
-		$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
-		$words = array ();
-		// Output one line until end-of-file
-		while(!feof($myfile)) {
-		   
-		   $words[fgets($myfile) . ""]= 1;
-		}
-		fclose($myfile);
-		$wordIn = $_REQUEST["wordIn"];
-		
-			echo array_key_exists($wordIn,$words)
-		
-?>
+	First name: <input type="text" id="qInput"><br>
+
 	</body>
 </html>

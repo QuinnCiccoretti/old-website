@@ -8,7 +8,6 @@
 		}
 		fclose($myfile);
 		$wordIn = $_REQUEST["wordIn"];
-		
-			echo array_key_exists($wordIn,$words)
+		echo "" . array_key_exists($wordIn,$words)
 		
 ?>
