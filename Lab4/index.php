@@ -12,7 +12,7 @@
 				}
 			}
 			
-			 	xhttp.open("./words.php?query="+input,true)
+			 	xhttp.open("words.php?query="+input,true)
 			 	xhttp.send(input);
 			
 		}
