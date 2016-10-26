@@ -1,5 +1,5 @@
 <?php
-		$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+		$myfile = fopen("words.txt", "r") or die("Unable to open file!");
 		$words = array ();
 		// Output one line until end-of-file
 		while(!feof($myfile)) {
