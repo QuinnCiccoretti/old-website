@@ -4,9 +4,9 @@
 </head>
 <body>
 	<?php
-		// $words = file_get_contents(words.txt);
+		 $words = file_get_contents(words.txt);
 		 $wordIn = $_REQUEST["wordIn"];
-		echo $wordIn;
+		echo $words;
 		
 ?>
 </body>
