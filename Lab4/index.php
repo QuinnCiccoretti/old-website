@@ -12,7 +12,7 @@
 				}
 			}
 			
-			 	xhttp.open("whttps://lit-app.herokuapp.com/Lab4/words.php?wordIn="+input,true)
+			 	xhttp.open("https://lit-app.herokuapp.com/Lab4/words.php?wordIn="+input,true)
 			 	xhttp.send(input);
 			
 		}
