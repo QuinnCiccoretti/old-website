@@ -12,7 +12,7 @@
 				}
 			}
 			
-			 	xhttp.open("words.php?query="+input,true)
+			 	xhttp.open("whttps://lit-app.herokuapp.com/Lab4/words.php?wordIn="+input,true)
 			 	xhttp.send(input);
 			
 		}
@@ -21,6 +21,6 @@
 <body>
 	First name: <input type="text" id="qInput"><br>
 	<button type = "button" onclick = "getWord()">Click</button>
-	<a href="https://lit-app.herokuapp.com/Lab4/words.php?query=">Link</a>
+	<a href="https://lit-app.herokuapp.com/Lab4/words.php?wordIn=">Link</a>
 	</body>
 </html>
