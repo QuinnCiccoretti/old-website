@@ -12,7 +12,7 @@
 				}
 			}
 			
-			 	xhttp.open("words.php?wordIn="+input,true)
+			 	xhttp.open("GET","words.php?wordIn="+input,true)
 			 	xhttp.send(input);
 			
 		}
