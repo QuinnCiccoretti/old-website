@@ -1,7 +1,6 @@
 <?php
-		 $words = file_get_contents(words.txt);
-		 $word = $_GET["wordIn"];
-		 echo $word;
-?>
-
-
+	$inputVar = $_GET['r'];
+	// $inputVar = $argv[1];
+	echo "Hello, 7th period!";
+	echo $inputVar;
+ ?>
