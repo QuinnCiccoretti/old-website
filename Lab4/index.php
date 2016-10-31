@@ -7,8 +7,9 @@
 			var input = document.getElementById("qInput").value;
 			xhttp.onreadystatechange = function(){
 				if((this.readyState==4)&&(this.status==200)){
-					console.log(this.responseText);
-					
+					resp = this.responseText;
+					console.log(resp);
+					document.getElementById("output").innerHTML = resp;
 				}
 			}
 			
@@ -22,5 +23,6 @@
 	First name: <input type="text" id="qInput"><br>
 	<button type = "button" onclick = "getWord()">Click</button>
 	<a href="https://lit-app.herokuapp.com/Lab4/words.php?wordIn=">Link</a>
+	<h2 id = "output"></h2>
 	</body>
 </html>
