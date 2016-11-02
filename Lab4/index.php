@@ -12,6 +12,7 @@
 					
     				var patt1 = "/\w*" + input+"\w*/g";
     				var arr = resp.match(patt1);
+    				console.log(arr)
 					document.getElementById("output").innerHTML = arr;
 				}
 			}
