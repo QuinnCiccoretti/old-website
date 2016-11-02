@@ -9,10 +9,13 @@
 				if((this.readyState==4)&&(this.status==200)){
 					resp = this.responseText;
 					console.log(resp);
-					document.getElementById("output").innerHTML = resp;
+					
+    				var patt1 = /\w+[]\w+/g;
+    				var arr = resp.match(patt1);
+					document.getElementById("output").innerHTML = arr;
 				}
 			}
-			
+				input = input.toLowerCase();
 			 	xhttp.open("Get","./words.php?wordIn="+input,true)
 			 	xhttp.send(input);
 			
