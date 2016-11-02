@@ -10,7 +10,7 @@
 					resp = this.responseText;
 					console.log(resp);
 					
-    				var patt1 = "/\w+["+input+"]\w+/g";
+    				var patt1 = "/\w*" + input+"\w*/g";
     				var arr = resp.match(patt1);
 					document.getElementById("output").innerHTML = arr;
 				}
