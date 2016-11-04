@@ -5,21 +5,21 @@
 	var dict = "";
 	function getWord(){
 			var xhttp = new XMLHttpRequest();
-			var input = document.getElementById("qInputL").value;
-			
+			var inputL = document.getElementById("qInputL").value;
+			var inputN = document.getElementById("qInputN").value;
 			xhttp.onreadystatechange = function(){
 				if((this.readyState==4)&&(this.status==200)){
 					resp = this.responseText;
 					console.log("Resp:"+resp);
     				dict = resp;
-					document.getElementById("output").innerHTML = reg(dict,input);
+					document.getElementById("output").innerHTML = reg(dict,inputN,inputL);
 				}
 			}
 			if(dict == ""){
-				input = input.toLowerCase();
-				console.log("Input (PHP queried):"+input);
-			 	xhttp.open("Get","./words.php?wordIn="+input,true);
-			 	xhttp.send(input);
+				inputL = inputL.toLowerCase();
+				console.log("Input (PHP queried):"+inputL);
+			 	xhttp.open("Get","./words.php?wordIn="+inputL,true);
+			 	xhttp.send(inputL);
 			 }
 			 
 			
@@ -76,7 +76,7 @@
 		<button type = "button" onclick = "getWord()">Click</button>
 		<a href="https://lit-app.herokuapp.com/Lab4/words.php?wordIn=">Link</a>
 		<h2 id = "output">(Possible Words Will Appear Here)</h2>
-
+		<button type = "button" onclick = "doTests()">Test</button>
 	</div>
 	</body>
 </html>
