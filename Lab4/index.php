@@ -80,7 +80,7 @@
 		<button type = "button" onclick = "getWord()">Click</button>
 		<a href="https://lit-app.herokuapp.com/Lab4/words.php?wordIn=">Link</a>
 		<h2 id = "output">(Possible Words Will Appear Here)</h2>
-		<button type = "button" onclick = "doTests()">Test</button>
+		
 	</div>
 	</body>
 </html>
