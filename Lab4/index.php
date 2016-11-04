@@ -10,7 +10,7 @@
 			xhttp.onreadystatechange = function(){
 				if((this.readyState==4)&&(this.status==200)){
 					resp = this.responseText;
-					console.log("Resp:"+resp);
+					// console.log("Resp:"+resp);
     				dict = resp;
 					document.getElementById("output").innerHTML = reg(dict,parseInt(inputN),inputL);
 				}
