@@ -15,7 +15,7 @@
 					
 				}
 			}
-			if(dict == ""){}
+			if(dict == ""){
 				input = input.toLowerCase();
 				console.log("Input (PHP queried):"+input);
 			 	xhttp.open("Get","./words.php?wordIn="+input,true);
