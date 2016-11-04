@@ -12,7 +12,7 @@
 					resp = this.responseText;
 					console.log("Resp:"+resp);
     				dict = resp;
-					
+					document.getElementById("output").innerHTML = reg(dict,input);
 				}
 			}
 			if(dict == ""){
@@ -21,7 +21,7 @@
 			 	xhttp.open("Get","./words.php?wordIn="+input,true);
 			 	xhttp.send(input);
 			 }
-			 document.getElementById("output").innerHTML = reg(dict,input);
+			 
 			
 		}
 	function reg(dict,n,letter){
