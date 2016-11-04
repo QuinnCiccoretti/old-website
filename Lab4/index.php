@@ -15,12 +15,12 @@
 					document.getElementById("output").innerHTML = reg(dict,parseInt(inputN),inputL);
 				}
 			}
-			if(dict == ""){
+			
 				inputL = inputL.toLowerCase();
 				console.log("Input (PHP queried):"+inputL);
 			 	xhttp.open("Get","./words.php?wordIn="+inputL,true);
 			 	xhttp.send(inputL);
-			 }
+			 
 			 
 			
 		}
