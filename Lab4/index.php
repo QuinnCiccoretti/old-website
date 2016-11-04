@@ -25,7 +25,7 @@
 			
 		}
 	function reg(dict,n,letter){
-		console.log*("Been at reg")
+		console.log("Been at reg")
 		if(n>1){
 			var patt = "\\b\\w{" +(n-1)+"}"+letter;
 	    	var re = new RegExp(patt);
