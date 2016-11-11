@@ -1,10 +1,40 @@
 <html>
 <head>
   <title>Quinn's Quinndex of Labs</title>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+<script type="text/javascript">
+  window.onscroll = function() {myFunction()};
+var r = 66;
+  var g = 244;
+  var b = 66;
+document.body.style.backgroundColor= 'rgb(' + parseInt(r) + ',' + parseInt(g) + ',' + parseInt(b) + ')';
+  function myFunction() {
+    var body = document.body,
+    html = document.documentElement;
+
+    var height = Math.max( body.scrollHeight, body.offsetHeight, 
+    html.clientHeight, html.scrollHeight, html.offsetHeight);
+    var s =  document.body.scrollTop;
+    s = (s/height)*(244/132)*244;
+    r = s/2;
+    g=244-s;
+    b= s;
+    document.body.style.backgroundColor= 'rgb(' + parseInt(r) + ',' + parseInt(g) + ',' + parseInt(b) + ')';
+    console.log(s);   
+  }
+</script>
   <style type="text/css">
-  .list{
+  #list{
     /*list-style-image: url('https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif');*/
+    top: 100px;
     list-style-type: none;
     text-align: center;
     width: 30%;
@@ -19,7 +49,7 @@
   .snoop2{
     
   position: absolute;
-    height: 75%;
+    height: 40%;
     display: inline-block;
     transform: rotate(-45deg);
     left: 1000px;
@@ -27,7 +57,7 @@
   .snoop1{
     
   position: absolute;
-    height: 75%;
+    height: 40%;
     display: inline-block;
     transform: rotate(45deg);
     left: -100px;
@@ -77,9 +107,14 @@ body{
   position: relative;
 }
 h1{
+  width: 100%;
+  margin: auto;
+  position: fixed;
   text-align: center;
   font-size: 100px;
   color: #ff3296;
+  background-color: black;
+  z-index: 1;
   transition: padding-top 0.2s;
   animation-name: example;
     animation-duration: 3s;
@@ -102,13 +137,19 @@ body{
     <h1>Quinndex of Labs</h1>
     <div class = "main">
     <img class = "snoop1" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif"/>
-    <ol class = "list">
-      <li><a href="http://lit-app.herokuapp.com/Lab00/Putin.html">O</a></li>
-      <li><a href="http://lit-app.herokuapp.com/Lab1/index.html">I</a></li>  <!--   Lab  0--> 
-      <li><a href="http://lit-app.herokuapp.com/Lab2/index.html">II</a></li>  <!-- Lab 1 -->
-      <li><a href="http://lit-app.herokuapp.com/Lab3/index.html">III</a></li>  <!-- Lab 2 -->
-      <li><a href="http://lit-app.herokuapp.com/Lab4/index.php">IV</a></li>  <!-- Lab 3 -->
-      <li><a href="http://lit-app.herokuapp.com/PHPDemo2">V</a></li>  <!-- Lab 4 -->
+    <ol id = "list">
+      <li class = "el"><a href="http://lit-app.herokuapp.com/Lab00/Putin.html">O</a></li>
+      <li class = "el"><a href="http://lit-app.herokuapp.com/Lab1/index.html">I</a></li>  <!--   Lab  0--> 
+      <li class = "el"><a href="http://lit-app.herokuapp.com/Lab2/index.html">II</a></li>  <!-- Lab 1 -->
+      <li class = "el"><a href="http://lit-app.herokuapp.com/Lab3/index.html">III</a></li>  <!-- Lab 2 -->
+      <li class = "el"><a href="http://lit-app.herokuapp.com/Lab4/index.php">IV</a></li>  <!-- Lab 3 -->
+      <li class = "el"><a href="http://lit-app.herokuapp.com/PHPDemo2">V</a></li>  <!-- Lab 4 -->
+      <li class = "el"><a href="http://lit-app.herokuapp.com/Lab1/index.html">VI</a></li>  <!--   Lab  0--> 
+      <li class = "el"><a href="http://lit-app.herokuapp.com/Lab2/index.html">VII</a></li>  <!-- Lab 1 -->
+      <li class = "el"><a href="http://lit-app.herokuapp.com/Lab3/index.html">VIII</a></li>  <!-- Lab 2 -->
+      <li class = "el"><a href="http://lit-app.herokuapp.com/Lab4/index.php">IIX</a></li>  <!-- Lab 3 -->
+      <li class = "el"><a href="http://lit-app.herokuapp.com/PHPDemo2">IX</a></li>  <!-- Lab 4 -->
+      <li class = "el"><a href="http://lit-app.herokuapp.com/PHPDemo2">X</a></li>  <!-- Lab 4 -->
     </ol>
     <img class = "snoop2" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif"/>
     <a href="http://lit-app.herokuapp.com/words.php" style = "display: none;">II</a>
