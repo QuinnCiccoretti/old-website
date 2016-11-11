@@ -26,10 +26,14 @@ var r = 66;
     var height = Math.max( body.scrollHeight, body.offsetHeight, 
     html.clientHeight, html.scrollHeight, html.offsetHeight);
     var s =  document.body.scrollTop;
-    s = (s/height)*(244/132)*244;
-    r = s/2;
-    g=244-s;
-    b= s;
+    var th = (s/height)*(244/132)*244;
+    var csx = th*9;
+    document.getElementById('snoop2').style.top = csx;
+    document.getElementById('snoop1').style.top = csx;
+    r = th/2;
+    g=244-th;
+    b= th;
+    document
     document.body.style.backgroundColor= 'rgb(' + parseInt(r) + ',' + parseInt(g) + ',' + parseInt(b) + ')';
     console.log(s);   
   }
@@ -49,7 +53,7 @@ var r = 66;
   position: relative;
 
   }
-  .snoop2{
+  #snoop2{
     
   position: absolute;
     height: 40%;
@@ -57,7 +61,7 @@ var r = 66;
     transform: rotate(-45deg);
     left: 1000px;
   }
-  .snoop1{
+  #snoop1{
     
   position: absolute;
     height: 40%;
@@ -139,7 +143,7 @@ body{
 <body>
     <h1>Quinndex of Labs</h1>
     <div class = "main">
-    <img class = "snoop1" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif"/>
+    <img id = "snoop1" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif"/>
     <ol id = "list">
       <li class = "el"><a href="http://lit-app.herokuapp.com/Lab00/Putin.html">O</a></li>
       <li class = "el"><a href="http://lit-app.herokuapp.com/Lab1/index.html">I</a></li>  <!--   Lab  0--> 
@@ -154,7 +158,7 @@ body{
       <li class = "el"><a href="http://lit-app.herokuapp.com/PHPDemo2">IX</a></li>  <!-- Lab 4 -->
       <li class = "el"><a href="http://lit-app.herokuapp.com/PHPDemo2">X</a></li>  <!-- Lab 4 -->
     </ol>
-    <img class = "snoop2" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif"/>
+    <img id = "snoop2" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif"/>
     <a href="http://lit-app.herokuapp.com/words.php" style = "display: none;">II</a>
     </div>
     
