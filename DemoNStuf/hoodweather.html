@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Hood Weather</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function doAJAXWeather(){
+			$.ajax({
+				url:"http://api.openweathermap.org/data/2.5/weather?zip="+$("#zip").val()+",us&appid=23a819cec17549d547b1d2083c4909b0",
+				success:function(response){
+					var resp = response.sys.sunrise
+					console.log(resp);
+					var data = new Date(resp*1000)
+					$("#output").html(data)
+				}
+			})
+		}
+	</script>
+</head>
+<body>	
+	Zip:<input id = "zip">
+	<button id = "button" autocomplete = "on" onclick = "doAJAXWeather()">Go</button>
+	<div id = "output">OUTPUT HERE</div>
+</body>
+</html>
