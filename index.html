@@ -17,6 +17,7 @@ var r = 66;
   var b = 66;
   window.onload = function(){
     document.body.style.backgroundColor= 'rgb(' + parseInt(r) + ',' + parseInt(g) + ',' + parseInt(b) + ')';
+    document.getElementById("titleh").style.height = 0;
   }
 
   function myFunction() {
@@ -30,7 +31,7 @@ var r = 66;
     var csx = th*7;
     document.getElementById('snoop2').style.top = csx;
     document.getElementById('snoop1').style.top = csx;
-    document.getElementById("lordandsaviour").style.height = csx/7;
+    document.getElementById("titleh").style.height = csx/6.5;
     r = th/2;
     g=244-th;
     b= th;
@@ -148,7 +149,7 @@ body{
 </head>
 <body>
     <div id ="lordandsaviour">
-    <h1>Quinndex of Labs</h1>
+    <h1 id = "titleh">Quinndex of Labs</h1>
     </div>
     <div class = "main">
     <img id = "snoop1" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif"/>
