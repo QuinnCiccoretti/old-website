@@ -20,6 +20,7 @@ var r = 66;
   window.onload = function(){
     document.body.style.backgroundColor= 'rgb(' + parseInt(r) + ',' + parseInt(g) + ',' + parseInt(b) + ')';
     document.getElementById("titleh").style.height = 0;
+    document.getElementById("myAudio").play();
   }
 
   function myFunction() {
@@ -172,8 +173,9 @@ body{
     <img id = "snoop2" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif"/>
     <a href="http://lit-app.herokuapp.com/words.php" style = "display: none;">II</a>
     </div>
-    
-   
+    <audio id = "myAudio" controls>
+      <source src="24KMagic.mp3" type="audio/mpeg">
+    </audio>
     
 </body>
 </html>
