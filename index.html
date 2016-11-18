@@ -11,6 +11,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
 <script type="text/javascript">
+
+
   window.onscroll = function() {myFunction()};
 var r = 66;
   var g = 244;
@@ -31,7 +33,7 @@ var r = 66;
     var csx = th*7;
     document.getElementById('snoop2').style.top = csx;
     document.getElementById('snoop1').style.top = csx;
-    // document.getElementById("titleh").style.height = csx/6.5;
+    document.getElementById("titleh").style.height = Math.min((csx/6.5)*7,100);
     r = th/2;
     g=244-th;
     b= th;
@@ -61,7 +63,7 @@ var r = 66;
     height: 40%;
     display: inline-block;
     transform: rotate(-45deg);
-    left: 1000px;
+    left: 80%;
   }
   #snoop1{
     
@@ -69,7 +71,7 @@ var r = 66;
     height: 40%;
     display: inline-block;
     transform: rotate(45deg);
-    left: -100px;
+    left: -10%;
   }
   .putin{
     position: absolute;
@@ -117,7 +119,7 @@ body{
 }
 #lordandsaviour{
   
-  background-color: black;
+  
 }
 h1{
   width: 100%;
@@ -126,7 +128,7 @@ h1{
   text-align: center;
   font-size: 100px;
   color: #ff3296;
-  background-color: black;
+  background-image: url("http://img11.deviantart.net/d402/i/2011/128/2/f/geometric_wallpaper_by_yesterdaysgrace-d3fwvvt.jpg");
   background-repeat: repeat;
   z-index: 1;
   transition: padding-top 0.2s;
