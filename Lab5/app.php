@@ -10,7 +10,7 @@
    $email = $_GET["email"];
    $favartist = $_GET["favartist"];
    $kendrick = $_GET["kendrick"];
-   echo "\nTest: Name:" . $name . " Email: " . $email . " FavArtist: " . $favartist . " Kendrick?: " . $kendrick . "\n";
+   // echo "\nTest: Name:" . $name . " Email: " . $email . " FavArtist: " . $favartist . " Kendrick?: " . $kendrick . "\n";
     $db = pg_connect( "$host $port $dbname $credentials"  );
    if(!$db){
       echo "Error : Unable to open database\n";
@@ -70,9 +70,9 @@ EOF;
         <title>Rap</title>
         <script type="text/javascript">
             window.onload= function(){
-    			$("#main").hide();
-    			$("#main").fadeIn();
-		    }
+          $("#main").hide();
+          $("#main").fadeIn();
+        }
         </script>
         <style type="text/css">
             body{
@@ -96,26 +96,26 @@ EOF;
                 margin: 20px;
             }
             #sub{
-    		background-color: black; /* Green */
-    	    border: 2px solid white;
-    	    color: white;
-    	    padding: 15px 32px;
-    	    height: 9%;
-    	    width: 14%;
-    	    text-align: center;
-    	    text-decoration: none;
-    	    font-size: 16px;
-    	    margin: 4px 2px;
-    	    cursor: pointer;
-    	    transition: height .5s, width .5s, color .5s, background-color .5s;
-        	}
-        	#sub:hover{
-        		height: 9%;
-        	    width: 16%;
-        	    background-color: white; /* Green */
-        	    border: 2px solid black;
-        	    color: black;
-        	}
+        background-color: black; /* Green */
+          border: 2px solid white;
+          color: white;
+          padding: 15px 32px;
+          height: 9%;
+          width: 14%;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          transition: height .5s, width .5s, color .5s, background-color .5s;
+          }
+          #sub:hover{
+            height: 9%;
+              width: 16%;
+              background-color: white; /* Green */
+              border: 2px solid black;
+              color: black;
+          }
         </style>
     </head>
     <body>
