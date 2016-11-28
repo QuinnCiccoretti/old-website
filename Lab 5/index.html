@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+        <title>Rap</title>
+        <script type="text/javascript">
+            window.onload= function(){
+    			$("#main").hide();
+    			$("#main").fadeIn();
+		    }
+        </script>
+        <style type="text/css">
+            body{
+                text-align: center;
+                margin:auto;
+                background-image:url("http://gwydir.demon.co.uk/jo/tess/optical4.gif");
+                background-repeat:repeat;
+                font-family: 'Inconsolata', monospace;
+                font-size: 50px;
+            }
+            #main{
+                text-align: center;
+                margin:auto;
+                width: 80%;
+                background-color: rgba(214,34, 172,.75);
+                color: white;
+            }
+            .qinput{
+                height: 50px;
+                width: 25%;
+                margin: 20px;
+            }
+            #sub{
+    		background-color: black; /* Green */
+    	    border: 2px solid white;
+    	    color: white;
+    	    padding: 15px 32px;
+    	    height: 9%;
+    	    width: 14%;
+    	    text-align: center;
+    	    text-decoration: none;
+    	    font-size: 16px;
+    	    margin: 4px 2px;
+    	    cursor: pointer;
+    	    transition: height .5s, width .5s, color .5s, background-color .5s;
+        	}
+        	#sub:hover{
+        		height: 9%;
+        	    width: 16%;
+        	    background-color: white; /* Green */
+        	    border: 2px solid black;
+        	    color: black;
+        	}
+        </style>
+    </head>
+    <body>
+        <div id = "main">
+        <form action="app.php" method = "get" autocomplete="on">
+            Name: <input class ="qinput" type="text" name="name"><br>
+            E-mail: <input class ="qinput" type="text" name="email"><br>
+            Favorite Song And Artist: <input class ="qinput" type="text" name="favartist"><br>
+            What do you think of Kendrick Lamar?<input class ="qinput" type="text" name="kendrick"><br>
+            <input id = "sub" type="submit">
+        </form>
+        </div>
+    </body>
+</html>
