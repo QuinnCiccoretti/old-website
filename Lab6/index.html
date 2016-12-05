@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="app.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+        <style type="text/css">
+            body{
+                text-align:center;
+                margin: auto;
+                font-family: 'Bungee', cursive;
+                font-size:40px;
+            }
+            #sub{
+                font-family: 'Bungee', cursive;
+                outline:none;
+        		background-color: black; /* Green */
+        	    border: 2px solid white;
+        	    color: white;
+        	    padding: 15px 32px;
+        	    height: 9%;
+        	    width: 14%;
+        	    text-align: center;
+        	    text-decoration: none;
+        	    font-size: 16px;
+        	    margin: 4px 2px;
+                font-family: 'Inconsolata', monospace;
+        	    cursor: pointer;
+        	    transition: height .5s, width .5s, color .5s, background-color .5s;
+        	}
+        	#sub:hover{
+        		height: 9%;
+        	    width: 16%;
+        	    background-color: white; /* Green */
+        	    border: 2px solid black;
+        	    color: black;
+        	}
+        	input{
+        	    
+        	    font-size: 100%;
+        	    text-align:center;
+        	    height: 40px;
+        	    outline:none;
+                border: 2px solid red;
+                border-radius: 10px;
+                width: 40%;
+                background-color: #3CBC8D;
+                color: white;
+                -webkit-transition: 0.5s;
+                transition: 0.5s;
+            }
+            input:focus{
+                border: 6px solid purple;
+                width: 50%;
+            }
+            select{
+                margin: 30px;
+                text-align: center;
+                background-color: #3CBC8D;
+                color: white;
+                font-size:100%;
+                width: 30%;
+                outline:none;
+                border: 2px solid red;
+                border-radius: 12px;
+                box-sizing: border-box;
+                -webkit-transition: 0.5s;
+                transition: 0.5s;
+            }
+            select:focus{
+                width:40%;
+                border: 6px solid purple;
+            }
+            #output{
+                background-color: black;
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        Input the First Zip Code:<br>
+        <input type="text" id = "zip1"/><br>
+        Input the Second Zip Code:<br>
+        <input type="text" id = "zip2"/><br>
+        <select id = "sel">
+          <option value="km">Kilometers</option>
+          <option value="mile">Miles</option>
+        </select><br>
+        <button onclick  = "doAJAXZip()" id = "sub" >Calculate</button>
+        <h1>The Time It would take to drive a bugatti at top speed between these zip codes is:</h1>
+        <div id = "output">(Click button for Distance)</div>
+    </body>
+</html>
